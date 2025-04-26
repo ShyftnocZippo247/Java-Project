@@ -24,7 +24,7 @@ public class Transaction {
     }
 
     public Transaction setAmount(double amt) {
-        if (amt == 0) throw new IllegalArgumentException("Amount must be positive.");
+        if (amt <= 0) throw new IllegalArgumentException("Amount must be positive.");
         this.amount = amt; return this;
     }
 
@@ -35,7 +35,7 @@ public class Transaction {
         } else if (type == TransactionType.WITHDRAW) {
             msg = "Withdrawal of " + amount + " from " + toAccountNumber;
         } else if (type == TransactionType.TRANSFER) {
-            msg = "Transfer of " + amount + " from " + toAccountNumber + " to " + fromAccountNumber;
+            msg = "Transfer of " + amount + " from " + fromAccountNumber + " to " + toAccountNumber;
         }
         return msg + " on " + timestamp;
     }
